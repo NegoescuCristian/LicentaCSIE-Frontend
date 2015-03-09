@@ -15,11 +15,33 @@ padding-left:10px;
     font-size: 18px;
 }
 
+ #select 
+{
+    float: left;
+    width: 6em;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0,98,36,0.8);
+    padding: 0.2em 0.4em;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+					
+}
+
+#select:hover 
+{
+   background-color:#7ac142 ;
+				
+}
+
 #select{
 
     position: absolute;
    
+    	
     left: 44%;
+    bottom:50%;
     
   
     font-size: 18px;
@@ -47,7 +69,7 @@ padding-left:10px;
 #submitB{
       
     position: absolute;
-    top: 68%;
+    top: 78%;
     left: 37%;
     right: 40%;
     font-size: 20px;
