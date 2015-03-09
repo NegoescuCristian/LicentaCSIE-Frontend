@@ -1,0 +1,27 @@
+{
+    "views":{
+        "/":"login.html",
+        "/login":"login.html",
+        "/main":"main.html",
+        "/administrator":"",
+        "/client":"",
+        "/sale":""
+    },
+    "js": {
+
+    },
+    "controller": {
+
+    },
+    "capiAuth": {
+        "user":"node",
+        "password":"123"
+    },
+    "capiEndpoints":{
+        "host":"localhost",
+        "port":"8080",
+        "uri":{
+            "login":"/login"
+        }
+    }
+}
