@@ -1,0 +1,8 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+
+  "dependencies": {
+    "promised-io": "https://github.com/kriszyp/promised-io/archive/master.tar.gz"
+  }
+}
