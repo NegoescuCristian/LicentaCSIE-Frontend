@@ -6,11 +6,16 @@
         "/administrator":"admin.html",
         "/client":"client.html",
         "/sale":"sale.html",
-        "/register":"register.html"
+        "/register":"register.html",
+        "/bid":"bid.html"
+    },
+
+    "/bid": {
+        "customFields": ["$user"]
     },
 
     "controller": {
-        "/login" : "loginController"
+        "/login" : "loginController",
         "/register":"registerController"
     },
     "capiAuth": {
