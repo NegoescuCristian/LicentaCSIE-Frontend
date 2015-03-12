@@ -16,12 +16,34 @@ function route(request, response) {
 }
 
 function handle(controllerPath, method, request, response) {
+    console.log('###',controllerPath);
     if(!routingsCache[controllerPath]) {
         var myControllerFunction = require(controllerPath);
         routingsCache[controllerPath] = myControllerFunction;
     }
-    var myFunction = routingsCache[controllerPath];
-    myFunction[method](request, response);
+
+    var body = '';
+    request.on('data', function(chunk) {
+        body += chunk;
+    });
+    request.on('end',function(data) {
+
+        if(typeof data !== 'undefined') {
+            body += data;
+        }
+
+        try {
+            data = JSON.parse(body);
+        } catch (ex) {
+            data = {};
+        }
+        request.body = data;
+        var myFunction = routingsCache[controllerPath];
+
+        request.filePath = controllerPath;
+        myFunction[method](request, response);
+    });
+
 }
 
 
