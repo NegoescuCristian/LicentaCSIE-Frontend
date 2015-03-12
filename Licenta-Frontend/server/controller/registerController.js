@@ -2,17 +2,27 @@
  * Created by root on 3/10/15.
  */
 
-var configuration = require('../../conf/licenta.json').views;
+var configuration = require('../../conf/licenta.json').views,
+    fileUtil = require('../lib/util/readFileUtil');
 
 /**
- * Get method to treat the register page
+ * Get method to load the register page.
  * @param request
  * @param response
  */
 function doGet(request, response) {
+    console.log("inside register controller ");
+    var path = request.filePath+"/register.html";
+    var file = fileUtil.readFile(path,'utf8').then(function(data) {
+        console.log("DATA:",data);
+    }, function(err) {
+
+    });
+
     if(!response.finished) {
         response.writeHead(200,"text/html");
-        response.end();
+        console.log('######:',typeof file);
+        response.end(file);
     }
 }
 

@@ -1,38 +1,52 @@
 /**
  * Created by root on 3/9/15.
  */
+var url = require('url'),
+    httpHelper = require('../lib/httpHelper');
 
 function doGet(request, response) {
 
-    if(!response.finished) {
+    var body = request.body;
+    var stringDataResponse = JSON.stringify(body);
+    if (!response.finished) {
         response.writeHead(200, {"Content-Type": "application/json"});
-        response.end(JSON.stringify({"boss": "deBoss"}));
+        response.end(stringDataResponse);
     }
 
 }
 
-
 function doPost(request, response) {
-    console.log("OK!!!");
-    var body="";
-    request.on('data', function(chunk) {
-        body+=chunk;
-    });
-    request.on('end',function() {
-        if(!response.finished) {
-            var data = JSON.parse(body);
-            console.log(data);
-            var stringDataResponse = JSON.stringify(data);
+
+    console.log("##### ", request.url);
+
+    var fromPage = url.parse(request.headers.referer || request.url);
+
+    //var redirection = fromPage.query.split('=')[1];
+    ;//you can take this from request
+    //user , pass - check them
+
+    console.log("Received content:", request.body);
+    httpHelper.get('localhost','8083','/licenta-capi/customer',{}).then(function(data){
+        console.log('RESPONSE FORM CAPI:',data);
+        if (!response.finished) {
             response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(stringDataResponse);
+            response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
+        }
+    }, function(err) {
+        console.log('RESPONSE ERROR FORM CAPI:',err);
+        if (!response.finished) {
+            response.writeHead(500, {"Content-Type": "application/json"});
+            response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
         }
     });
+
 }
 
+function doDelete() {
+}
 
-function doDelete() {}
-
-function doPut() {}
+function doPut() {
+}
 
 module.exports = {
     get: doGet,
