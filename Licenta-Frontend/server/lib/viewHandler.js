@@ -27,6 +27,7 @@ function route(request, response) {
 
 function handle(page, response) {
     var htmlPagesDir = path.join(process.cwd(), './client/pages');
+    //validate if view is accesible
     /**test exists**/
     if(!routingsCache[page]) {
         var pagePath = path.join(htmlPagesDir, page);
@@ -61,6 +62,14 @@ function servePage(content, response) {
         response.end(content);
     }
 }
+
+function redirectToLogin(page, response) {
+    if(!response.finished) {
+        response.writeHead(302, {'Location': '/login?fromPage=' + page});
+        response.end();
+    }
+}
+
 
 function serveNotFoundPage(response) {
     //you can define some error pages 404.html, 500.html......
