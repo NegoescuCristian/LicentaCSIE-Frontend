@@ -1,43 +1,4 @@
-/**
- * Created by root on 3/9/15.
- */
 
-function request(method,headers,host,port,path,body) {
-    //TODO request
-    header["Authorization"] = "Basic " //encode your user and password from configuration
-
-
-    switch(method) {
-        case "GET":
-            _get(headers, host, port, path, body);
-            break;
-        case "POST":
-            _post(headers, host, port, path, body);
-            break;
-    }
-
-}
-
-function _get(){
-    var deferred = Promise.defer();
-
-
-    req = http.request('', function (req) {
-        //req.on('data',
-    });
-
-    req.on('error', function () {
-        deferrred.reject();
-    })
-    return deferred.promise;
-}
-function _post(){}
-
-module.exports = {
-    get: _get,
-    post: _post
-}
-/**
  'use strict';
 
  var http = require('http'),
@@ -45,7 +6,7 @@ module.exports = {
  seq = Promise.seq,
  defer = Promise.defer,
  buffer = require('buffer'),
- configuration = require('../../../../conf/licenta.json');
+ configuration = require('../../conf/licenta.json');
 
  function get(hostname, port, path, headers) {
     return _request('GET', hostname, port, path, headers);
@@ -60,8 +21,8 @@ module.exports = {
 
     var deferred = defer();
 
-    var userName = configuration.auth.userName,
-        password = configuration.auth.password;
+    var userName = configuration.capiAuth.user,
+        password = configuration.capiAuth.password;
 
     var authenticationBuffer = new Buffer(userName + ":" + password, 'utf8');
     var token = authenticationBuffer.toString('base64');
@@ -74,6 +35,7 @@ module.exports = {
         method: method,
         headers: headers
     };
+     console.log(headers);
 
     //local hack don't understand the meaning of this
     var isResolved = false;
@@ -90,8 +52,6 @@ module.exports = {
                 chunk += buff.toString('utf8');
             }
 
-            logger.debug('http_helper: Received response for ' + requestDescription
-            + ' status ' + res.statusCode + ' body ' + chunk);
 
             if (res.statusCode < 400) {
                 var data = (chunk === '') ? {} : JSON.parse(chunk);
@@ -104,19 +64,16 @@ module.exports = {
                     });
                 }
             } else {
-                logger.error('http_helper: unexpected status code was received for '
-                + requestDescription + ' status code: ' + res.statusCode + ' body: ' + chunk);
                 if(!isResolved) {
                     isResolved = true;
-                    deferred.reject(new RainError('Failed to perform request',
-                        RainError.ERROR_HTTP, res.statusCode));
+                    deferred.reject(new Error('Failed to perform request',
+                        'MAJOR', res.statusCode));
                 }
             }
         });
     });
 
     request.on('error', function (err) {
-        logger.error('http_helper: request failed ' + requestDescription, err);
         if(!isResolved) {
             isResolved = true;
             deferred.reject(new RainError('Failed to perform request', RainError.ERROR_HTTP));
@@ -137,4 +94,3 @@ module.exports = {
     post: post
 };
 
- **/
