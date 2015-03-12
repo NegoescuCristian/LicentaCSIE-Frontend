@@ -4,61 +4,13 @@
     <title>LOGIN - REFACTOR HERE</title>
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <app name="login"></app>
     <script src="../js/lib/jquery-1.11.1.js"></script>
-    <script src="../js/validateUser.js"></script>
+    <script src="../js/lib/require.js"></script>
+    <script src="../js/runner.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $("#loginB").on("click", function () {
-                var userName = $("#userName").val();
-                var password = $("#password").val();
-
-                var validUserName = isValidUserName(userName);
-                if (!validUserName) {
-                    //color the user name border with red and display error message
-                    $('#userNameTable').css({"border-style":"solid","border-color":"#FF0000"});
-                }else {
-                    $('#userNameTable').css({"border-style":"","border-color":""});
-                }
-                var validPassword = isValidPassword(password);
-                if (!validPassword) {
-                    //color the password border with red and display error message
-                    $('#passwordTable').css({"border-style":"solid","border-color":"#FF0000"});
-                }else {
-                    $('#passwordTable').css({"border-style":"","border-color":""});
-                }
-
-                var role = $('#select').val();
-                if(validUserName && validPassword) {
-                    $.ajax({
-                        url: '/controller/login',
-                        type: 'POST',
-                        data:JSON.stringify( {
-                            'userName': userName,
-                            "password":password,
-                            "role":role
-                        }),
-                        dataType: 'application/json',
-                        contentType: 'application/json',
-                        success: function (data) {
-                            alert(JSON.stringify(data));
-                        },
-                        error: function (err) {
-                            err = err.responseText;
-                        }
-                    });
-                }
-
-            });
-
-            $("#register").on("click", function() {
-                console.log('clicked on register');
-                $.ajax({
-                    url: '/register',
-                    type: 'GET'
-                });
-            });
-
+            Runner.run();
         });
     </script>
 </head>
@@ -69,45 +21,57 @@
     background-attachment: fixed;
     background-position: center; ">
 
-<div id="loginF">
+<div id="app-container">
     <div name="f1" id="f1">
         <table id="loginForm">
             <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     User Name:
                 </td>
-                <td id="userNameTable"><input id="userName" type="text" name="username" value=""/>
+                <td class="f1_action" id="userNameTable"><input id="userName" type="text" name="username" value=""/>
                 </td>
             </tr>
             <tr id=passwordRow">
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Password :
                 </td>
-                <td id="passwordTable"><input id="password" type="password" name="password" value=""/>
+                <td class="f1_action" id="passwordTable"><input id="password" type="password" name="password" value=""/>
                 </td>
             </tr>
 
             <tr>
-                <td id="fraza"><p style="font-family: 'Indie Flower', cursive; font-size: 15px; font-weight: bold">If
-                    you are not registered, click here to register! </p></td>
-                <button id="register" type="button">Register</button>
+                <td class="f1_label">
+                <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Role : </p>
+                </td>
+                <td class="f1_action">
+                <select id="select">
+                    <option>Buyer</option>
+                    <option>Seller</option>
+                    <option>Admin</option>
+                </select>
+                </td>
             </tr>
 
             <tr>
-                <div id="loginB">Login</div>
+                <td class="f1_label"></td>
+                <td class="f1_action">
+                    <div id="loginB">Login</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="f1_label" id="fraza">
+                    <p style="font-family: 'Indie Flower', cursive; font-size: 15px; font-weight: bold"> Don't have account? </p>
+                </td>
+                <td class="f1_action">
+                    <button id="register" type="button">Register</button>
+                </td>
             </tr>
 
 
         </table>
-        <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Role : </p>
 
-        <select id="select">
-            <option>Buyer</option>
-            <option>Seller</option>
-            <option>Admin</option>
-        </select>
     </div>
-
 </div>
 
 </body>
