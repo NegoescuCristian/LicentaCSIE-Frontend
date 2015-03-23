@@ -27,7 +27,9 @@ function doGet(request, response) {
 }
 
 function doPost(request, response) {
-
+    //TODO
+    console.log('Inside register controller POST method');
+    console.log(JSON.stringify(request.body));
 }
 
 function doDelete() {}
@@ -35,5 +37,6 @@ function doDelete() {}
 function doPut() {}
 
 module.exports = {
-    get: doGet
-}
+    get: doGet,
+    post: doPost
+};
