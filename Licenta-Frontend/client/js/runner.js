@@ -8,6 +8,11 @@ var configuration = {
         'controller': {
             'file': 'loginController.js'
         }
+    },
+    'register': {
+        'controller': {
+            'file': 'registerController.js'
+        }
     }
 };
 
