@@ -4,6 +4,15 @@
     <title>REGISTER</title>
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <script src="../js/lib/jquery-1.11.1.js"></script>
+    <script src="../js/lib/require.js"></script>
+    <script src="../js/runner.js"></script>
+    <app name="register"></app>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Runner.run();
+        });
+    </script>
 </head>
 
 
@@ -12,45 +21,53 @@
     background-attachment: fixed;
     background-position: center; ">
 
-<div id="registerF">
-    <form name="f1" method="post" action="" id="f1">
-        <table id="tabel">
+<div id="app-container">
+    <div name="f1" id="f1">
+        <table id="registerForm">
             <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     User Name :
                 </td>
-                <td><input type="text" name="username" value=""/>
+                <td id="userNameTable"><input id="userName" type="text" name="username" value=""/>
                 </td>
             </tr>
             <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Password :
                 </td>
-                <td><input type="password" name="password" value=""/>
+                <td id="passwordTable"><input id="password" type="password" name="password" value=""/>
                 </td>
             </tr>
             <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Confirm Password :
                 </td>
-                <td><input type="password" name="confirm" value=""/>
+                <td id="confirmPasswordTable"><input id="confirmPassword" type="password" name="confirm" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td class="f1_label">
+                    <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Role : </p>
+                </td>
+                <td class="f1_action">
+                    <select id="select">
+                        <option>Buyer</option>
+                        <option>Seller</option>
+                        <option>Admin</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="f1_label"></td>
+                <td class="f1_action">
+                    <button id="loginB">Submit</button>
                 </td>
             </tr>
 
 
-            <tr>
-                <button id="submitB" type="button">Submit</button>
-            </tr>
-
-
         </table>
-        <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Role : </p>
-        <select id="select">
-            <option>Buyer</option>
-            <option>Seller</option>
-            <option>Admin</option>
-        </select>
-    </form>
+        </div>
 
 </div>
 
