@@ -42,5 +42,13 @@ define([], function() {
         return true;
     }
 
+    ValidationModule.isSamePassword = function(password, confirmPassword){
+
+        if(password === confirmPassword){
+            console.log("same pass "+password+" "+confirmPassword);
+            return true;
+        }
+        return false;
+    }
     return ValidationModule;
 });
