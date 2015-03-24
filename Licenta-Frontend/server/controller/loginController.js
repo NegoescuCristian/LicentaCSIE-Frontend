@@ -2,7 +2,8 @@
  * Created by root on 3/9/15.
  */
 var url = require('url'),
-    httpHelper = require('../lib/httpHelper');
+    httpHelper = require('../lib/httpHelper'),
+    SessionStore = require('../lib/session-store/store');
 
 function doGet(request, response) {
 
@@ -26,7 +27,17 @@ function doPost(request, response) {
     //user , pass - check them
 
     console.log("Received content:", request.body);
-    httpHelper.get('localhost','8083','/licenta-capi/customer',{}).then(function(data){
+    request.session.role = request.body.role;
+    request.session.user = request.body.userName
+    console.log(request.session);
+    SessionStore.update(request.sessionId, request.session).then(function () {
+        if (!response.finished) {
+            response.writeHead(200, {"Content-Type": "application/json"});
+            response.end(JSON.stringify({'redirect': true, 'toPage': fromPage, 'details': 'failedToLogin'}));
+        }
+    });
+
+    /*httpHelper.get('localhost','8083','/licenta-capi/customer',{}).then(function(data){
         console.log('RESPONSE FORM CAPI:',data);
         if (!response.finished) {
             response.writeHead(200, {"Content-Type": "application/json"});
@@ -38,7 +49,7 @@ function doPost(request, response) {
             response.writeHead(500, {"Content-Type": "application/json"});
             response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
         }
-    });
+    });*/
 
 }
 
