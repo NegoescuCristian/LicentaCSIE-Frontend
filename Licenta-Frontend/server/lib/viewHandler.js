@@ -5,6 +5,7 @@
 var url = require('url');
 var fs = require('fs'),
     path = require('path'),
+    util = require('util'),
     Promise = require('promised-io/promise'),
     configuration = require('../../conf/licenta.json');
 
@@ -14,18 +15,21 @@ var fs = require('fs'),
  */
 var routingsCache = {};
 function route(request, response) {
+
     var path = url.parse(request.url).pathname,
         views = configuration["views"];
     path = path.split('.')[0];
     if(views[path]) {
-        handle(views[path], response);
+        handle(request, path, response);
     } else {
         serveNotFoundPage(response);
     }
 }
 
 
-function handle(page, response) {
+function handle(request, pathOfPage, response) {
+    var views = configuration["views"];
+    var page = views[pathOfPage];
     var htmlPagesDir = path.join(process.cwd(), './client/pages');
     //validate if view is accesible
     /**test exists**/
@@ -49,7 +53,27 @@ function handle(page, response) {
     }
 
     routingsCache[page].then(function(data) {
-        servePage(data, response);
+        console.log(pathOfPage);
+        var authorization = configuration[pathOfPage] ? configuration[pathOfPage].authorization : null;
+        console.log(authorization);
+        if (authorization) {
+            console.log(request.session);
+            if (request.session.role == authorization) {
+                if(configuration[pathOfPage]['customFields']) {
+                    var customFields = configuration[pathOfPage]['customFields'];
+                    for(var i = 0; i < customFields.length; i++) {
+                        var param = customFields[i].replace('$', '');
+                        data = data.replace(customFields[i], request.session[param]);
+                    }
+
+                }
+                servePage(data, response);
+            } else {
+                redirectToLogin(page, response);
+            }
+        } else {
+            servePage(data, response);
+        }
     }, function (err) {
         serveNotFoundPage(response);
     });
