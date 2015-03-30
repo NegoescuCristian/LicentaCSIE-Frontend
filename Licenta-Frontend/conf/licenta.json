@@ -11,7 +11,8 @@
     },
 
     "/bid": {
-        "customFields": ["$user"]
+        "customFields": ["$user", "$role"],
+        "authorization": "Admin"
     },
 
     "controller": {
