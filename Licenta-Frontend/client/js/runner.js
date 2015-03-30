@@ -13,6 +13,11 @@ var configuration = {
         'controller': {
             'file': 'registerController.js'
         }
+    },
+    'form': {
+        'controller': {
+            'file': 'formController.js'
+        }
     }
 };
 
