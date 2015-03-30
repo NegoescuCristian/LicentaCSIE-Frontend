@@ -13,7 +13,7 @@ function SessionStore() {
 SessionStore._instance = null;
 
 SessionStore.prototype.createSession = function (sessionId) {
-    console.log("CREATING SESSION");
+    console.log("store.js : Session started");
     var deferred = Promise.defer();
     var self = this;
     this._data[sessionId] = {};

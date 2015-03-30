@@ -9,16 +9,18 @@ var Promise = require('promised-io/promise');
 var SessionStore = require('./lib/session-store/store');
 
 function start() {
+    var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+    var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+    console.log(ipaddress, port);
     http.createServer(function(request, response) {
         handleRequest(request, response);
         //router.route(request,response);
-    }).listen(8081);
+    }).listen(port, ipaddress);
     console.log('Server has started');
+
 }
 
 function handleRequest(request, response) {
-
-
     var sessionId;
 
     Promise.seq([
@@ -30,8 +32,8 @@ function handleRequest(request, response) {
                 CookieHelper.setCookie(request, response, sessionId);
                 return SessionStore.createSession(sessionId);
             } else {
+                //unsign the cookie
                 sessionId = CookieHelper.unSign(myCookie);
-                console.log("UNSIGNED ", sessionId);
                 return Promise.seq([
                     SessionStore.getSession.bind(SessionStore, sessionId),
                     function (session) {
@@ -49,7 +51,6 @@ function handleRequest(request, response) {
             }
         },
         function (session) {
-            console.log("SESSSSION ", sessionId);
             request.sessionId = sessionId;
             request.session = session;
         },
