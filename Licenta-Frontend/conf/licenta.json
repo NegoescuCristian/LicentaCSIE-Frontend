@@ -1,11 +1,11 @@
 {
     "views":{
-        "/":"login.html",
+        "/":"Home.html",
         "/login":"login.html",
-        "/main":"main.html",
+        "/home":"Home.html",
         "/administrator":"admin.html",
         "/client":"client.html",
-        "/sale":"sale.html",
+        "/form":"form.html",
         "/register":"register.html",
         "/bid":"bid.html"
     },
