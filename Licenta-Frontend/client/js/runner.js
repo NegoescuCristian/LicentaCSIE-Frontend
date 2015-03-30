@@ -21,6 +21,7 @@ Runner.run = function () {
 
 
     require(['/js/controller/' + configuration[appName].controller.file], function (Controller) {
+        console.log('###',configuration[appName].controller.file);
         var appController = new Controller();
         appController.start();
     });
