@@ -88,19 +88,6 @@ a.bt1:hover {
     cursor: pointer;
 }
 
-#Footer {
-    background-color: rgba(0, 0, 0, 1);
-    color: white;
-    clear: both;
-    text-align: center;
-    padding: 1px;
-    top: 320px;
-    position: relative;
-    border-radius: 5px;
-    font-family: 'Indie Flower', cursive;
-    font-size: 20px;
-}
-
 #Slideshow {
     float: right;
     width : 500px;

@@ -140,20 +140,6 @@
     bottom:57%;*/
 }
 
-#Footer 
-{
-	   background-color: rgba(0,0,0,1);
-	   color:white;
-	   clear:both;
-	   text-align:center;
-	   padding:1px;	
-	   top:599px;
-	   position: relative;
-	   border-radius: 5px;
-	   font-family: 'Indie Flower', cursive;
-	   font-size: 20px;
-}
-
 #titlu
 {
 	position:absolute;
@@ -255,19 +241,6 @@ a.bt1:hover
 	left:4%;
 }
 
-#Footer 
-{
-	   background-color: rgba(0,0,0,1);
-	   color:white;
-	   clear:both;
-	   text-align:center;
-	   padding:1px;	
-	   top:599px;
-	   position: relative;
-	   border-radius: 5px;
-	   font-family: 'Indie Flower', cursive;
-	   font-size: 20px;
-}
 #aduagaPoza
 { 
   position: relative;
