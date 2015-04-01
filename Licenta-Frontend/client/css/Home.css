@@ -12,17 +12,6 @@
     border-radius: 6px;
 }
 
-#NavBar {
-
-    padding-top: 20px;
-    padding-right: 5px;
-    padding-bottom: 20px;
-    padding-left: 5px;
-    background-color: #e2e7e7;
-    overflow: hidden;
-    /* float: right; */
-}
-
 a.bt1 {
     width: 6em;
     text-decoration: none;
@@ -63,11 +52,6 @@ a.bt1:hover {
 
 }
 
-#search {
-    height:25px;
-    width: 300px;
-    border-radius: 4px;
-}
 
 #categorii {
     float: left;
@@ -93,6 +77,6 @@ a.bt1:hover {
     width : 500px;
     padding: 10px;
     margin: 10px;
-    overflow: hidden:
+    overflow: hidden;
     border: 3px;
 }

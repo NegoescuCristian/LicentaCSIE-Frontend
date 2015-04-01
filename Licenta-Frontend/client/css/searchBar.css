@@ -1,0 +1,28 @@
+#NavBar {
+
+    padding-top: 20px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    background-color: #e2e7e7;
+    overflow: hidden;
+    /* float: right; */
+}
+
+#titlu
+{
+    position:absolute;
+    float:left;
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    background-color:rgba(0,162,232,1);
+    color:white;
+    padding:2px;
+    border-radius: 5px;
+}
+
+#search {
+    height:25px;
+    width: 300px;
+    border-radius: 4px;
+}

@@ -139,19 +139,19 @@
     left: 28%;
     bottom:57%;*/
 }
-
+/*
 #titlu
 {
-	position:absolute;
-	top:1%;
-	left:40%;
-	font-family: 'Indie Flower', cursive;
-	font-size: 40px;
-	background-color:rgba(0,162,232,1);
-	color:white;
-	padding:2px;
-	border-radius: 5px;
+    position:absolute;
+    float:left;
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    background-color:rgba(0,162,232,1);
+    color:white;
+    padding:2px;
+    border-radius: 5px;
 }
+*/
 #Header
 {
 	position:absolute;
@@ -169,23 +169,7 @@
 
 
 
-#NavBar
-{
-	
-	position: absolute;
-	top:11%;
-	left:43%;
-	margin-left:-170px;
-	padding-top: 20px;
-    	padding-right: 5px;
-   	padding-bottom: 20px;
-    	padding-left: 5px;
-	background-color:#e2e7e7;
-	
-					
 
-
-}
  a.bt1 
 {
 	float: left;
@@ -229,11 +213,7 @@ a.bt1:hover
 				
 }
 
-#search
-{
-	width: 15em;
-	border-radius: 4px;
-}
+
 #Categorii
 {
 	position:absolute;
