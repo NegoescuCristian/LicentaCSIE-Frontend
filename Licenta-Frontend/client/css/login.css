@@ -47,7 +47,7 @@
     width: 6em;
     text-decoration: none;
     color: white;
-    background-color: rgba(0,98,36,0.8);
+    background-color: rgba(0,162,232,1);
     padding: 0.2em 0.4em;
     border-right: 1px solid white;
     font-family: 'Indie Flower', cursive;
@@ -57,7 +57,7 @@
 
 #select:hover 
 {
-   background-color:#7ac142 ;
+   background-color:#85c6f9 ;
 				
 }
 
@@ -67,7 +67,7 @@
     width: 6em;
     text-decoration: none;
     color: white;
-    background-color: rgba(0, 98, 36, 0.8);
+    background-color: rgba(0,162,232,1);
     padding: 0.2em 0.6em;
     border-right: 1px solid white;
     font-family: 'Indie Flower', cursive;
@@ -76,7 +76,7 @@
 }
 
 #loginB:hover {
-    background-color: #7ac142;
+    background-color: #85c6f9;
 
 }
 
@@ -105,7 +105,7 @@
     width: 6em;
     text-decoration: none;
     color: white;
-    background-color: rgba(0, 98, 36, 0.8);
+    background-color: rgba(0,162,232,1);
     padding: 0.2em 0.6em;
     border-right: 1px solid white;
     font-family: 'Indie Flower', cursive;
@@ -114,7 +114,7 @@
 }
 
 #register:hover {
-    background-color: #7ac142;
+    background-color: #85c6f9;
 
 }
 
@@ -134,4 +134,15 @@
     /*position: absolute;
     left: 28%;
     bottom:57%;*/
+}
+#titlu
+{
+    position:absolute;
+    float:left;
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    background-color:rgba(0,162,232,1);
+    color:white;
+    padding:2px;
+    border-radius: 5px;
 }

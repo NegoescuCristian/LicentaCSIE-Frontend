@@ -169,8 +169,8 @@
 
 
 
-
- a.bt1 
+/*
+ a.bt1
 {
 	float: left;
 	width: 6em;
@@ -183,15 +183,35 @@
 	font-size: 20px;
         text-align:center;
         border-radius: 6px;
-					
+
 }
 
-a.bt1:hover 
+a.bt1:hover
 {
 	background-color:#85c6f9;
-				
+
+}
+*/
+a.bt1 {
+    width: 6em;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 162, 232, 1);
+    padding: 0.2em 0.6em;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    user-select: none;
+    cursor: pointer;
+
 }
 
+a.bt1:hover {
+    background-color: #85c6f9;
+
+}
 
 #select
 {
