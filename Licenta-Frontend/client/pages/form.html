@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Bucharest Bidding Online </title>
-    <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/Home.css">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <script src="../js/lib/jquery-1.11.1.js"></script>
     <script src="../js/lib/require.js"></script>
@@ -15,65 +15,61 @@
     </script>
     <script>
         $(function(){
-            $("#Footer").load("footer.html");
-            $("#NavBar").load("searchBar.html");
+            $("#Footer").load("/footer");
+            $("#NavBar").load("/searchBar");
         });
     </script>
-    <script>
-   function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
-
-       reader.onloadend = function () {
-           preview.src = reader.result;
-       }
-
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-  }
-
-  previewFile();  //calls the function named previewFile()
-  </script>
 </head>
-
 
 <body>
 	<div id="hole page">
-		<!--<div id="titlu">
-			<h>Bucharest Bidding Online</h>
-		</div>-->
-
 		<div id="NavBar">
-		  <!--<table id="table">
-		     <tr>
-
-			<td><td class="f1_action" id="search"><input id="search" type="search" name="search" value=""/>
-                </td></td>
-			<td class="bt1">
-			  <select  id="select">
-			    <option selected="true" style="display:none;">Categories</option>
-                    	    <option>Vehicles</option>
-                            <option>Jewelry</option>
-                            <option>Collectables</option>
-			    <option>Art</option>
-			    <option>Fashion</option>
-			    <option>Estate</option>
-                          </select></td>
-			<td ><a class="bt1"style="width:3em">Search</a></td>
-                        <td ><a href="./login.html"class="bt1"style="width:5em">My Account</a></td>
- 			<td ><a href="./form.html"class="bt1"style="width:2em">+</a></td>
-                     </tr>
-
-		  </table>-->
 
 		</div>
-<!--
+
+        <!-- /*
+<div id="hole page">
+    <div id="Header" style='margin: 51px;'>
+        <a class="bt1" style="width:5em">BUCHAREST BIDING ONLINE</a>
+    </div>
+    <div id="NavBar" style="
+    overflow: hidden;
+">
+        <table border="0" id="table" style="
+    float: right;
+">
+            <tbody>
+            <tr>
+                <td colspan="6" class="bt1"><a id="toAccount" class="bt1" style="
+    margin-bottom: 10px;
+    float: right;
+">Account</a></td>
+            </tr>
+            <tr>
+
+                <td>
+                </td>
+                <td class="f1_action" id="search"><input id="search">
+                </td>
+
+                <td class="bt1">
+                    <select id="select">
+                        <option selected="true" style="display:none;">Categories</option>
+                        <option>Vehicles</option>
+                        <option>Jewelry</option>
+                        <option>Collectables</option>
+                        <option>Art</option>
+                        <option>Fashion</option>
+                        <option>Estate</option>
+                    </select></td>
+                <td><a class="bt1" style="width:3em">Search</a></td>
+                <td><a class="bt1" style="display: none;width:5em">My Account</a></td>
+                <td><a id="toForm" class="bt1" style="width:2em">+</a></td>
+            </tr>
+            */-->
+        <!--
 		<div id="app-container">
-    <div name="f1" id="f1">
+        <div name="f1" id="f1">
         <table id="registerForm">
             <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
@@ -86,16 +82,16 @@
                 <td class="f1_label">
                     <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Category : </p>
                 </td>
-		<td class="bt1">
-			  <select  id="select">
-			    <option selected="true" style="display:none;">Categories</option>
-                    	    <option>Vehicles</option>
-                            <option>Jewelry</option>
-                            <option>Collectables</option>
-			    <option>Art</option>
-			    <option>Fashion</option>
-			    <option>Estate</option>
-                          </select></td>
+                <td class="bt1">
+                    <select  id="select">
+                        <option selected="true" style="display:none;">Categories</option>
+                        <option>Vehicles</option>
+                        <option>Jewelry</option>
+                        <option>Collectables</option>
+                        <option>Art</option>
+                        <option>Fashion</option>
+                        <option>Estate</option>
+                    </select></td>
                 </td>
             </tr>
             <tr>
@@ -105,32 +101,23 @@
                 <td id="DescriptionTable"><input id="Description" type="Description" name="Description" value=""/>
                 </td>
             </tr>
-           
-	    <tr>
-	<td class="f1_label">
-                    <p id="role" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold">Add Photo: </p>
-	<div id="adaugaPoza">
-                <input  style="font-family: 'Indie Flower', cursive; font-size: 14px; font-weight: bold;" class="f1_label" type="file" onchange="previewFile()"><br>
-		<img  style="font-family: 'Indie Flower', cursive; font-size: 14px; font-weight: bold;" class="f1_label" src="" height="20" alt="Image preview...">
-	</div>
-	</td>
-            </tr>
-           <tr>
-	
+
+            <tr>
+
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Name:
                 </td>
                 <td id="NameTable"><input id="Name" type="Name" name="Name" value=""/>
                 </td>
             </tr>
-	    <tr>
+            <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Adress:
                 </td>
                 <td id=" AdressTable"><input id=" Adress" type=" Adress" name=" Adress" value=""/>
                 </td>
             </tr>
-	    <tr>
+            <tr>
                 <td class="f1_label" style="font-family: 'Indie Flower', cursive; font-size: 18px; font-weight: bold;">
                     Phone Number:
                 </td>
@@ -146,20 +133,17 @@
             </tr>
             <tr>
                 <td class="f1_label"></td>
-                <td class="f1_action">
-                    <button id="loginB">Submit</button>
+                <td class="bt1">
+                    <a class="bt1" style="width:3em" id="loginB">Submit</a>
                 </td>
             </tr>
 
 
         </table>
-        </div>
 -->
-</div>
-</div>
+    </div>
 
         <div id="Footer"></div>
+
 </body>
-
-
 </html>

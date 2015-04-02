@@ -1,15 +1,17 @@
 /**
  * Created by root on 3/30/15.
  */
-define([], function () {
+define([], function() {
 
     function FormController() {
 
     }
 
-    FormController.prototype.start = function() {
+    FormController.prototype.start = function () {
 
     }
 
+
     return FormController;
+
 });

@@ -18,6 +18,11 @@ var configuration = {
         'controller': {
             'file': 'formController.js'
         }
+    },
+    'home': {
+        'controller': {
+            'file': 'homeController.js'
+        }
     }
 };
 

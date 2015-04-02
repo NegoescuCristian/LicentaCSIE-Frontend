@@ -3,11 +3,19 @@
     <title> Bucharest Bidding Online </title>
     <link rel="stylesheet" type="text/css" href="../css/Home.css">
     <link href="http://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" type="text/css">
+    <app name="home"></app>
+    <script src="../js/lib/require.js"></script>
+    <script src="../js/runner.js"></script>
     <script src="../js/lib/jquery-1.11.1.js"></script>
     <script>
         $(function(){
-            $("#Footer").load("footer.html");
-            $("#NavBar").load("searchBar.html");
+            $("#Footer").load("/footer");
+            $("#NavBar").load("/searchBar");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Runner.run();
         });
     </script>
 </head>
@@ -15,10 +23,8 @@
 <body>
 
 <div id="hole page">
-    <div id="Header">
-        <img id="poza" src="../resources/images/anigif.gif" style="
-    display: none;
-">
+    <div id="Header" style='margin: 51px;'>
+        <a class="bt1" style="width:5em">BUCHAREST BIDING ONLINE</a>
     </div>
 
     <div id="NavBar"></div>
@@ -33,7 +39,7 @@
 ">
             <tbody>
             <tr>
-                <td colspan="6" class="bt1"><a class="bt1" style="
+                <td colspan="6" class="bt1"><a id="toAccount" class="bt1" style="
     margin-bottom: 10px;
     float: right;
 ">Account</a></td>
@@ -57,7 +63,7 @@
                     </select></td>
                 <td><a class="bt1" style="width:3em">Search</a></td>
                 <td><a class="bt1" style="display: none;width:5em">My Account</a></td>
-                <td><a class="bt1" style="width:2em">+</a></td>
+                <td><a id="toForm" class="bt1" style="width:2em">+</a></td>
             </tr>
 
             </tbody>
@@ -65,39 +71,37 @@
 
     </div>
 -->
-    <div id="Categorii">
+<div id="Categorii">
 
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/arta.png">
-        </div>
-
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/bijuteri.png">
-        </div>
-
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/collectables.png">
-        </div>
-
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/estate.png">
-        </div>
-
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/fashion.png">
-        </div>
-
-        <div class="icons">
-            <img class="bt1" style="width:9em" src="../resources/images/png/Vehicule.png">
-        </div>
-
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/arta.png">
     </div>
 
-    <div id="Slideshow">
-
-
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/bijuteri.png">
     </div>
-    
+
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/collectables.png">
+    </div>
+
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/estate.png">
+    </div>
+
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/fashion.png">
+    </div>
+
+    <div class="icons">
+        <img class="bt1" style="width:9em" src="../resources/images/png/Vehicule.png">
+    </div>
+
+</div>
+
+<div id="Slideshow">
+
+
 </div>
 
         <div id="Footer"></div>
