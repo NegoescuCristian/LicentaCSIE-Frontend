@@ -7,6 +7,7 @@ var url = require('url'),
 
 function doGet(request, response) {
 
+    console.log("controller get");
     var body = request.body;
     var stringDataResponse = JSON.stringify(body);
     if (!response.finished) {
@@ -37,7 +38,7 @@ function doPost(request, response) {
         }
     });
 
-    /*httpHelper.get('localhost','8083','/licenta-capi/customer',{}).then(function(data){
+    httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName,{}).then(function(data){
         console.log('RESPONSE FORM CAPI:',data);
         if (!response.finished) {
             response.writeHead(200, {"Content-Type": "application/json"});
@@ -49,7 +50,7 @@ function doPost(request, response) {
             response.writeHead(500, {"Content-Type": "application/json"});
             response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
         }
-    });*/
+    });
 
 }
 
