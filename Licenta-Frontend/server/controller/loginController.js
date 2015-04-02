@@ -19,7 +19,6 @@ function doGet(request, response) {
 
 function doPost(request, response) {
 
-    console.log("##### ", request.url);
 
     var fromPage = url.parse(request.headers.referer || request.url);
 
@@ -38,7 +37,7 @@ function doPost(request, response) {
         }
     });
 
-    httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName,{}).then(function(data){
+    httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName + "/"+request.body.password,{}).then(function(data){
         console.log('RESPONSE FORM CAPI:',data);
         if (!response.finished) {
             response.writeHead(200, {"Content-Type": "application/json"});
