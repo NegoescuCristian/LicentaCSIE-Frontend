@@ -47,6 +47,7 @@ define(['/js/controller/validateUser.js'], function (Validation) {
                     dataType: 'json',
                     contentType: 'application/json',
                     success: function (data) {
+                        console.log("login successful");
                         self._handleResponse(data);
                     },
                     error: function (err) {
@@ -87,7 +88,8 @@ define(['/js/controller/validateUser.js'], function (Validation) {
     LoginController.prototype._handleResponse = function (data) {
         console.log("HERE:", data);
         if (data['redirect'] == true) {
-             //window.location = data['toPage'];
+            console.log("==============");
+             window.location.href = data['toPage'];
             //TODO redirect to main if the response from the server side controller returns valid user
         }
     }

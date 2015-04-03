@@ -38,10 +38,12 @@ function doPost(request, response) {
     });
 
     httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName + "/"+request.body.password,{}).then(function(data){
-        console.log('RESPONSE FORM CAPI:',data);
-        if (!response.finished) {
+
+        if (response.finished) {
+            console.log('RESPONSE FORM CAPI:',data);
             response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
+            response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'failedToLogin'}));
+            console.log("response",response['toPage']);
         }
     }, function(err) {
         console.log('RESPONSE ERROR FORM CAPI:',err);

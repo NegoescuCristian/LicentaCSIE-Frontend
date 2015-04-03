@@ -3,6 +3,7 @@
  */
 
 var configuration = require('../../conf/licenta.json').views,
+    httpHelper = require('../lib/httpHelper'),
     fileUtil = require('../lib/util/readFileUtil');
 
 /**
@@ -27,9 +28,25 @@ function doGet(request, response) {
 }
 
 function doPost(request, response) {
-    //TODO
+    //TODO redirect
     console.log('Inside register controller POST method');
-    console.log(JSON.stringify(request.body));
+    var path = request.filePath+"/register.html";
+    console.log("body"+ JSON.stringify(request.body));
+    httpHelper.post('localhost','8083','/licenta-capi/user/register', request.headers,request.body).then(function(data){
+
+        if (response.finished) {
+            console.log('RESPONSE FORM CAPI:',data);
+            response.writeHead(200, {"Content-Type": "application/json"});
+            response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'failedToLogin'}));
+            //console.log("response",response['toPage']);
+        }
+    }, function(err) {
+        console.log('RESPONSE ERROR FORM CAPI:',err);
+        if (response.finished) {
+            response.writeHead(500, {"Content-Type": "application/json"});
+            response.end(JSON.stringify({'redirect': true, 'toPage': '/login', 'details': 'failedToLogin'}));
+        }
+    });
 }
 
 function doDelete() {}
