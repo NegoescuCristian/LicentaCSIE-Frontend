@@ -42,7 +42,7 @@ define(['/js/controller/validateUser.js'], function (Validation) {
                     data: JSON.stringify({
                         'userName': userName,
                         "password": password,
-                        "role": role
+                        "userRole": role.toUpperCase()
                     }),
                     dataType: 'json',
                     contentType: 'application/json',

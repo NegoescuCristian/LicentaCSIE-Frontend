@@ -35,7 +35,6 @@
         method: method,
         headers: headers
     };
-     console.log(headers);
 
     //local hack don't understand the meaning of this
     var isResolved = false;
@@ -81,6 +80,7 @@
     });
 
     if (body) {
+        console.log('HERE:',JSON.stringify(body));
         request.write(JSON.stringify(body));
     }
 

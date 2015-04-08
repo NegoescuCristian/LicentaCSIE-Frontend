@@ -1,36 +1,41 @@
 {
-    "views":{
-        "/":"Home.html",
-        "/login":"login.html",
-        "/home":"Home.html",
-        "/administrator":"admin.html",
-        "/client":"client.html",
-        "/form":"form.html",
-        "/register":"register.html",
-        "/bid":"bid.html",
-        "/form":"form.html",
-        "/searchBar":"searchBar.html",
-        "/footer":"/footer.html"
+  "views": {
+    "pages": {
+      "/": "Home.html",
+      "/login": "login.html",
+      "/home": "Home.html",
+      "/administrator": "admin.html",
+      "/client": "client.html",
+      "/form": "form.html",
+      "/register": "register.html",
+      "/bid": "bid.html",
+      "/form": "form.html",
+      "/searchBar": "searchBar.html",
+      "/footer": "/footer.html"
     },
-
-    "/bid": {
-        "customFields": ["$user", "$role"],
-        "authorization": "Admin"
-    },
-
-    "controller": {
-        "/login" : "loginController",
-        "/register":"registerController"
-    },
-    "capiAuth": {
-        "user":"node",
-        "password":"123"
-    },
-    "capiEndpoints":{
-        "host":"localhost",
-        "port":"8080",
-        "uri":{
-            "login":"/login"
-        }
+    "authorization": [
+      "/",
+      "Home.html",
+      "register.html",
+      "client.html",
+      "form.html",
+      "admin.html",
+      "bid.html"
+    ]
+  },
+  "controller": {
+    "/login": "loginController",
+    "/register": "registerController"
+  },
+  "capiAuth": {
+    "user": "node",
+    "password": "123"
+  },
+  "capiEndpoints": {
+    "host": "localhost",
+    "port": "8080",
+    "uri": {
+      "login": "/login"
     }
+  }
 }

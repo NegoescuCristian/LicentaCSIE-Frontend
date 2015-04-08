@@ -16,7 +16,6 @@ function route(request, response) {
 }
 
 function handle(controllerPath, method, request, response) {
-    console.log('###',controllerPath);
     if(!routingsCache[controllerPath]) {
         var myControllerFunction = require(controllerPath);
         routingsCache[controllerPath] = myControllerFunction;

@@ -27,31 +27,50 @@ function doPost(request, response) {
     //user , pass - check them
 
     console.log("Received content:", request.body);
-    request.session.role = request.body.role;
-    request.session.user = request.body.userName
-    console.log(request.session);
-    SessionStore.update(request.sessionId, request.session).then(function () {
-        if (!response.finished) {
-            response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(JSON.stringify({'redirect': true, 'toPage': fromPage, 'details': 'failedToLogin'}));
-        }
-    });
+    request.session.role = request.body.userRole;
+    request.session.user = request.body.userName;
+    request.session.password = request.body.password;
 
-    httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName + "/"+request.body.password,{}).then(function(data){
+    //SessionStore.update(request.sessionId, request.session).then(function () {
+    //    if (!response.finished) {
+    //        response.writeHead(200, {"Content-Type": "application/json"});
+    //        response.end(JSON.stringify({'redirect': true, 'toPage': fromPage, 'details': 'failedToLogin'}));
+    //    }
+    //});
 
-        if (response.finished) {
-            console.log('RESPONSE FORM CAPI:',data);
-            response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'failedToLogin'}));
-            console.log("response",response['toPage']);
+    httpHelper.post('localhost','8083','/licenta-capi/user/login',{},request.body). then(
+        function(data) {
+            if(!response.finished) {
+                console.log("Response from licenta-capi:",data);
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'okToLogin'}));
+            }
+        },
+        function(err) {
+            if(!response.finished) {
+                console.log('Error response from licenta-capi, ',err);
+                response.writeHead(500, {"Content-Type": "application/json"});
+                response.end(JSON.stringify({'redirect': true, 'toPage': '/login', 'details': 'failedToLogin'}));
+            }
         }
-    }, function(err) {
-        console.log('RESPONSE ERROR FORM CAPI:',err);
-        if (!response.finished) {
-            response.writeHead(500, {"Content-Type": "application/json"});
-            response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
-        }
-    });
+
+    );
+
+
+    //httpHelper.get('localhost','8083','/licenta-capi/user/'+request.body.userName + "/"+request.body.password,{}).then(function(data){
+    //    if (!response.finished) {
+    //        console.log('RESPONSE FORM CAPI:',data);
+    //        response.writeHead(200, {"Content-Type": "application/json"});
+    //        response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'failedToLogin'}));
+    //        console.log("response",response['toPage']);
+    //    }
+    //}, function(err) {
+    //    console.log('RESPONSE ERROR FORM CAPI:',err);
+    //    if (!response.finished) {
+    //    response.writeHead(500, {"Content-Type": "application/json"});
+    //        response.end(JSON.stringify({'redirect': true, 'toPage': '', 'details': 'failedToLogin'}));
+    //    }
+    //});
 
 }
 
