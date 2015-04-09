@@ -66,7 +66,6 @@ function handle(request, pathOfPage, response) {
                 //    }
 
                 //}
-                console.log(data);
                 data = data.replace("$userName",request.session.authorization);
                 servePage(data, response);
             } else {

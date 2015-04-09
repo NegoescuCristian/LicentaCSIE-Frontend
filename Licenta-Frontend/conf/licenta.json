@@ -20,7 +20,8 @@
       "client.html",
       "form.html",
       "admin.html",
-      "bid.html"
+      "bid.html",
+      "searchBar.html"
     ]
   },
   "controller": {
