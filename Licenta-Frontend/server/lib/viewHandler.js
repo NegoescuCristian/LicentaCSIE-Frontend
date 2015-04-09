@@ -56,7 +56,6 @@ function handle(request, pathOfPage, response) {
         var authorization = configuration.views.authorization ? configuration.views.authorization : null;
 
         if(authorization.indexOf(page) != -1) {
-            console.log('HEREEE:',request.session.authorization);
             if (request.session.authorization !== undefined && request.session.authorization !== null) {
                 console.log('Authorization granted');
                 //if(configuration[pathOfPage]['customFields']) {
@@ -67,6 +66,8 @@ function handle(request, pathOfPage, response) {
                 //    }
 
                 //}
+                console.log(data);
+                data = data.replace("$userName",request.session.authorization);
                 servePage(data, response);
             } else {
                 console.log('Redirecting to login...');

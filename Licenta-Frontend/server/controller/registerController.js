@@ -22,13 +22,16 @@ function doGet(request, response) {
 
     if(!response.finished) {
         response.writeHead(200,"text/html");
-        console.log('######:',typeof file);
         response.end(file);
     }
 }
 
+/**
+ *
+ * @param request
+ * @param response
+ */
 function doPost(request, response) {
-    //TODO redirect
     console.log('Inside register controller POST method');
     var path = request.filePath+"/register.html";
     console.log("body"+ JSON.stringify(request.body));

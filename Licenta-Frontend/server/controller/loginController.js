@@ -38,10 +38,14 @@ function doPost(request, response) {
     //    }
     //});
 
-    httpHelper.post('localhost','8083','/licenta-capi/user/login',{},request.body). then(
+    var headers = {
+        "Content-Type":"application/json"
+    };
+
+    httpHelper.post('localhost','8083','/licenta-capi/user/login',headers,request.body). then(
         function(data) {
             if(!response.finished) {
-                console.log("Response from licenta-capi:",data);
+                request.session.authorization = request.body.userName;
                 response.writeHead(200, {"Content-Type": "application/json"});
                 response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'okToLogin'}));
             }
