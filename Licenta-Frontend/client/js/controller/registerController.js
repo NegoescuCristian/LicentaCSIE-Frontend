@@ -14,19 +14,21 @@ define(['/js/controller/validateUser.js'], function (Validation) {
 
         var self = this;
         $('#loginB').on('click', function(){
+            var firstName = $('#firstName').val();
+            var lastName = $('#lastName').val();
+            var address = $('#address').val();
             var userName = $('#userName').val();
             var password = $('#password').val();
             var confirmPassword = $('#confirmPassword').val();
 
-            var validUsername = Validation.isValidUserName(userName);
-            if(!validUsername){
-                self._treatMissingFields();
-                $('#userNameTable').css({"border-style": "solid", "border-color": "#FF0000"});
-                return;
-            } else {
-                $('#userNameTable').css({"border-style": "", "border-color": ""});
-            }
+
+            self._checkFields(firstName, 'firstNameTable');
+            self._checkFields(address, 'addressTable');
+            self._checkFields(lastName, 'lastNameTable');
+            self._checkFields(userName, 'userNameTable');
+
             var validPassword = Validation.isValidPassword(password);
+            var validUserName = Validation.isValidUserName(userName);
             if(!validPassword){
                 $('#passwordTable').css({"border-style": "solid", "border-color": "#FF0000"});
                 return;
@@ -54,12 +56,15 @@ define(['/js/controller/validateUser.js'], function (Validation) {
             }
 
             var role = $("#select").val();
-            if(validUsername && validPassword){
+            if(validUserName && validPassword){
                 $.ajax({
                     url: '/controller/register',
                     type: 'POST',
                     data: JSON.stringify({
                         'userName': userName,
+                        'firstName':firstName,
+                        'lastName':lastName,
+                        'address':address,
                         'password': password,
                         'userRole': role.toUpperCase()
                     }),
@@ -96,7 +101,7 @@ define(['/js/controller/validateUser.js'], function (Validation) {
         var formBody = this._formTable.find('tbody');
         formBody.append(toInsertRow);
         this._errorMessage = toInsertRow;
-    }
+    };
 
     RegisterController.prototype._handleResponse = function(data){
         console.log('Register -> response from register controller',data);
@@ -104,7 +109,18 @@ define(['/js/controller/validateUser.js'], function (Validation) {
                 window.location = data['toPage'];
             }
 
-    }
+    };
+
+    RegisterController.prototype._checkFields = function(field, fieldId) {
+        var fieldValue = Validation.isValidUserName(field);
+        if(!fieldValue){
+            this._treatMissingFields();
+            $('#'+fieldId).css({"border-style": "solid", "border-color": "#FF0000"});
+            return;
+        } else {
+            $('#'+fieldId).css({"border-style": "", "border-color": ""});
+        }
+    };
 
     return RegisterController;
 });

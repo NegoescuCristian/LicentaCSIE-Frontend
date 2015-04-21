@@ -11,7 +11,8 @@
       "/bid": "bid.html",
       "/form": "form.html",
       "/searchBar": "searchBar.html",
-      "/footer": "/footer.html"
+      "/footer": "footer.html",
+      "/account":"account.html"
     },
     "authorization": [
       "/",
@@ -20,7 +21,8 @@
       "form.html",
       "admin.html",
       "bid.html",
-      "searchBar.html"
+      "searchBar.html",
+      "account.html"
     ]
   },
   "controller": {

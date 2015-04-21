@@ -15,7 +15,7 @@ define([], function() {
         });
 
         $('#toAccount').on('click', function() {
-           console.log("Go to my account");
+           window.location = "/account";
         });
 
     };
