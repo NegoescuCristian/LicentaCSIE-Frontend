@@ -18,25 +18,11 @@ function doGet(request, response) {
 }
 
 function doPost(request, response) {
-
-
     var fromPage = url.parse(request.headers.referer || request.url);
 
-    //var redirection = fromPage.query.split('=')[1];
-    ;//you can take this from request
-    //user , pass - check them
-
-    console.log("Received content:", request.body);
     request.session.role = request.body.userRole;
     request.session.user = request.body.userName;
     request.session.password = request.body.password;
-
-    //SessionStore.update(request.sessionId, request.session).then(function () {
-    //    if (!response.finished) {
-    //        response.writeHead(200, {"Content-Type": "application/json"});
-    //        response.end(JSON.stringify({'redirect': true, 'toPage': fromPage, 'details': 'failedToLogin'}));
-    //    }
-    //});
 
     var headers = {
         "Content-Type":"application/json"

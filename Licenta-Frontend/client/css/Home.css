@@ -52,7 +52,7 @@ a.bt1:hover {
 }
 
 
-#categorii {
+#Categorii {
     float: left;
     top: 27%;
     width: 550px;
@@ -71,13 +71,15 @@ a.bt1:hover {
     cursor: pointer;
 }
 
-#Slideshow {
+#rightPageContainer {
     float: right;
     width : 500px;
     padding: 10px;
     margin: 10px;
     overflow: hidden;
     border: 3px;
+    background-color: #ebebeb;
+    text-align: center;
 }
 
 #f1 {
@@ -86,7 +88,6 @@ a.bt1:hover {
     top: 45%;
     left: 27%;
     width: 470px;
-    height: 400px;
     margin: 20px;
     overflow: hidden;
     background-color: #ebebeb;
