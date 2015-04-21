@@ -16,7 +16,6 @@
     "authorization": [
       "/",
       "Home.html",
-      "register.html",
       "client.html",
       "form.html",
       "admin.html",

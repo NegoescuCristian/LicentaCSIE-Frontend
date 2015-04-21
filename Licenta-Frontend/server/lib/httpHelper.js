@@ -75,12 +75,11 @@
     request.on('error', function (err) {
         if(!isResolved) {
             isResolved = true;
-            deferred.reject(new RainError('Failed to perform request', RainError.ERROR_HTTP));
+            deferred.reject(new Error('Failed to perform request'));
         }
     });
 
     if (body) {
-        console.log('HERE:',JSON.stringify(body));
         request.write(JSON.stringify(body));
     }
 

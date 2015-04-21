@@ -37,7 +37,7 @@ function doPost(request, response) {
     console.log("body"+ JSON.stringify(request.body));
     httpHelper.post('localhost','8083','/licenta-capi/user/register', request.headers,request.body).then(function(data){
 
-        if (response.finished) {
+        if (!response.finished) {
             console.log('RESPONSE FORM CAPI:',data);
             response.writeHead(200, {"Content-Type": "application/json"});
             response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'failedToLogin'}));
@@ -45,7 +45,7 @@ function doPost(request, response) {
         }
     }, function(err) {
         console.log('RESPONSE ERROR FORM CAPI:',err);
-        if (response.finished) {
+        if (!response.finished) {
             response.writeHead(500, {"Content-Type": "application/json"});
             response.end(JSON.stringify({'redirect': true, 'toPage': '/login', 'details': 'failedToLogin'}));
         }

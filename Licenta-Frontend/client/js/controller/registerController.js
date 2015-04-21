@@ -61,7 +61,7 @@ define(['/js/controller/validateUser.js'], function (Validation) {
                     data: JSON.stringify({
                         'userName': userName,
                         'password': password,
-                        'role': role
+                        'userRole': role.toUpperCase()
                     }),
                     dataType: 'json',
                     contentType:'application/json',
@@ -99,6 +99,7 @@ define(['/js/controller/validateUser.js'], function (Validation) {
     }
 
     RegisterController.prototype._handleResponse = function(data){
+        console.log('Register -> response from register controller',data);
             if(data['redirect'] == true){
                 window.location = data['toPage'];
             }
