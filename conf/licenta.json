@@ -1,0 +1,70 @@
+{
+  "views": {
+    "pages": {
+      "/": "Home.html",
+      "/login": "login.html",
+      "/home": "Home.html",
+      "/administrator": "admin.html",
+      "/client": "client.html",
+      "/form": "form.html",
+      "/register": "register.html",
+      "/form": "form.html",
+      "/searchBar": "searchBar.html",
+      "/footer": "footer.html",
+      "/account":"account.html",
+      "/announce": "announceBid.html"
+    },
+    "authorization": [
+      "/",
+      "Home.html",
+      "client.html",
+      "form.html",
+      "admin.html",
+      "bid.html",
+      "searchBar.html",
+      "account.html",
+      "announceBid.html"
+    ]
+  },
+  "controller": {
+    "/login": "loginController",
+    "/register": "registerController",
+    "/account": "accountController",
+    "/announce":"announceController",
+    "/bid":"bidController"
+  },
+
+  "dataLayer": {
+    "searchBar.html": "searchBar",
+    "announceBid.html":"getAnnounces"
+  },
+
+  "capiAuth": {
+    "user": "node",
+    "password": "123"
+  },
+  "capiEndpoints": {
+      "localhost": {
+        "host": "localhost",
+        "port": "8083",
+        "uri": {
+          "login": "/licenta-capi/user/login",
+          "register": "/licenta-capi/user/register",
+          "accountDetails":"/licenta-capi/user/details/%s",
+          "addAnnounce":"/licenta-capi/announce/register/%s",
+          "getAllAnnounce":"/licenta-capi/announce/getAll",
+          "getAnnounceByAnnounceId":"/licenta-capi/announce/%s",
+          "bid": "/licenta-capi/bid"
+        }
+      },
+      "openshift": {
+        "host": "licenta-testbiding.rhcloud.com",
+        "port": "80",
+        "uri": {
+          "login": "/licenta-capi/user/login",
+          "register": "/licenta-capi/user/register",
+          "accountDetails":"/licenta-capi/user/details/%s"
+        }
+      }
+  }
+}

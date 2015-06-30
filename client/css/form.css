@@ -1,0 +1,52 @@
+.settings-announce {
+    margin: 25px;
+    padding: 2px;
+}
+
+.settings-announce-head {
+    padding: 20px;
+}
+
+.settings-announce-head > p{
+    font-size: xx-large;
+}
+
+.settings-announce > input {
+    border-radius: 5px;
+    margin-left: 25px;
+    font-size: 16px;
+}
+
+.settings-announce > select {
+    border-radius: 5px;
+    margin-left: 25px;
+    font-size: 16px;
+    background-color: rgba(0, 162, 232, 1);
+}
+
+.settings-announce > span {
+    font-size: 16px;
+}
+
+#pageContainer {
+    float: left;
+    width: 421px;
+    height: 480px;
+    margin-left: 40px;
+    border: 2px solid rgba(0, 162, 232, 1);
+    padding: 20px;
+    margin-bottom: 3px;
+    margin-top: -35px;
+}
+
+#submitButton {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 162, 232, 1);
+    padding: 0.2em 0.6em;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+}

@@ -1,0 +1,359 @@
+#Header {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+
+}
+
+#hole-page {
+  height: 1000px;
+}
+
+#poza {
+
+    height: 9em;
+    width: 12em;
+    border-radius: 6px;
+}
+
+a.bt1 {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 162, 232, 1);
+    padding: 0.2em 0.6em;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    user-select: none;
+    cursor: pointer;
+
+}
+
+a.bt1:hover {
+    background-color: #85c6f9;
+
+}
+
+#select {
+    text-align: center;
+    width: 7em;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 162, 232, 1);
+    padding: 0.2em 0.4em;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
+    border-radius: 6px;
+
+}
+
+#select:hover {
+    background-color: #85c6f9;
+
+}
+
+
+#Categorii {
+    margin: 25px;
+    overflow: hidden;
+}
+
+.icons {
+    margin: 20px;
+    float: left;
+    padding: 5px;
+    position: relative;
+}
+
+.icons:hover {
+    cursor: pointer;
+}
+
+#rightPageContainer {
+    margin: 10px;
+    overflow: hidden;
+    padding-bottom:30px;
+    height: auto;
+    background-color: #ebebeb;
+    text-align: center;
+}
+
+#f1 {
+    position: relative;
+    float:left;
+    top: 45%;
+    left: 27%;
+    width: 470px;
+    margin: 20px;
+    overflow: hidden;
+    background-color: #ebebeb;
+    opacity: 0.9;
+    padding-top: 10px;
+    padding-left: 10px;
+
+}
+
+.f1_label {
+    text-align: center;
+    width: 200px;
+
+}
+
+#myGrid {
+    background: white;
+    outline: 0;
+    border: 1px solid gray;
+}
+
+.grid-header {
+    border: 1px solid gray;
+    border-bottom: 0;
+    border-top: 0;
+    background: url('../resources/grid/images/header-bg.gif') repeat-x center top;
+    color: black;
+    height: 24px;
+    line-height: 24px;
+}
+
+.grid-header label {
+    display: inline-block;
+    font-weight: bold;
+    margin: auto auto auto 6px;
+}
+
+.grid-header .ui-icon {
+    margin: 4px 4px auto 6px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.grid-header .ui-icon.ui-state-hover {
+    background-color: white;
+}
+
+.grid-header #txtSearch {
+    margin: 0 4px 0 4px;
+    padding: 2px 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border: 1px solid silver;
+}
+
+.options-panel {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid silver;
+    background: #f0f0f0;
+    padding: 4px;
+    margin-bottom: 20px;
+    width: 320px;
+    position: absolute;
+    top: 0px;
+    left: 650px;
+}
+
+/* Individual cell styles */
+.slick-cell.task-name {
+    font-weight: bold;
+    text-align: right;
+}
+
+.slick-cell.task-percent {
+    text-align: right;
+}
+
+.slick-cell.cell-move-handle {
+    font-weight: bold;
+    text-align: right;
+    border-right: solid gray;
+
+    background: #efefef;
+    cursor: move;
+}
+
+.cell-move-handle:hover {
+    background: #b6b9bd;
+}
+
+.slick-row.selected .cell-move-handle {
+    background: #D5DC8D;
+}
+
+.slick-row .cell-actions {
+    text-align: left;
+}
+
+.slick-row.complete {
+    background-color: #DFD;
+    color: #555;
+}
+
+.percent-complete-bar {
+    display: inline-block;
+    height: 6px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+/* Slick.Editors.Text, Slick.Editors.Date */
+input.editor-text {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    outline: 0;
+    padding: 0;
+
+}
+
+.ui-datepicker-trigger {
+    margin-top: 2px;
+    padding: 0;
+    vertical-align: top;
+}
+
+/* Slick.Editors.PercentComplete */
+input.editor-percentcomplete {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    outline: 0;
+    padding: 0;
+
+    float: left;
+}
+
+.editor-percentcomplete-picker {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 100%;
+    background: url("../images/pencil.gif") no-repeat center center;
+    overflow: visible;
+    z-index: 1000;
+    float: right;
+}
+
+.editor-percentcomplete-helper {
+    border: 0 solid gray;
+    position: absolute;
+    top: -2px;
+    left: -9px;
+    background: url("../images/editor-helper-bg.gif") no-repeat top left;
+    padding-left: 9px;
+
+    width: 120px;
+    height: 140px;
+    display: none;
+    overflow: visible;
+}
+
+.editor-percentcomplete-wrapper {
+    background: beige;
+    padding: 20px 8px;
+
+    width: 100%;
+    height: 98px;
+    border: 1px solid gray;
+    border-left: 0;
+}
+
+.editor-percentcomplete-buttons {
+    float: right;
+}
+
+.editor-percentcomplete-buttons button {
+    width: 80px;
+}
+
+.editor-percentcomplete-slider {
+    float: left;
+}
+
+.editor-percentcomplete-picker:hover .editor-percentcomplete-helper {
+    display: block;
+}
+
+.editor-percentcomplete-helper:hover {
+    display: block;
+}
+
+/* Slick.Editors.YesNoSelect */
+select.editor-yesno {
+    width: 100%;
+    margin: 0;
+    vertical-align: middle;
+}
+
+/* Slick.Editors.Checkbox */
+input.editor-checkbox {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.loading {
+    overflow:hidden;
+    padding: 10px;
+    width:45px;
+    height:45px;
+}
+.loader {
+    border-radius: 50%;
+    width:100%;
+    height:100%;
+    border-left: 3px solid #dde0e4;
+    border-right: 3px solid #0e87e3;
+    border-top: 3px solid #dde0e4;
+    border-bottom: 3px solid #0e87e3;
+
+    -webkit-animation: KEYFRAME-NAME 1s infinite;
+    -moz-animation:    KEYFRAME-NAME 1s infinite;
+    -o-animation:      KEYFRAME-NAME 1s infinite;
+    animation:         KEYFRAME-NAME 1s infinite;
+    /* width and height can be anything, as long as they're equal */
+}
+@-webkit-keyframes KEYFRAME-NAME {
+    0%   {  -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg); }
+
+    100% {  -ms-transform: rotate(360deg); /* IE 9 */
+        -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+        transform: rotate(360deg); }
+}
+@-moz-keyframes KEYFRAME-NAME {
+    0%   {  -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg); }
+
+    100% {  -ms-transform: rotate(360deg); /* IE 9 */
+        -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+        transform: rotate(360deg); }
+}
+@-o-keyframes KEYFRAME-NAME {
+    0%   {  -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg); }
+
+    100% {  -ms-transform: rotate(360deg); /* IE 9 */
+        -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+        transform: rotate(360deg); }
+}
+@keyframes KEYFRAME-NAME {
+    0%   {  -ms-transform: rotate(0deg); /* IE 9 */
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg); }
+
+    100% {  -ms-transform: rotate(360deg); /* IE 9 */
+        -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+        transform: rotate(360deg); }
+}
+

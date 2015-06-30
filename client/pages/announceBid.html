@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title> Bucharest Bidding Online </title>
+    <link rel="stylesheet" type="text/css" href="../css/Home.css">
+    <link rel="stylesheet" type="text/css" href="../css/announceBid.css">
+    <link href="http://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../resources/grid/slick.grid.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/grid/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+    <app name="announceBid"></app>
+    <script src="../js/lib/require.js"></script>
+    <script src="../js/runner.js"></script>
+    <script src="../js/lib/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#Footer").load("/footer");
+            $("#NavBar").load("/searchBar");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Runner.run();
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="hole-page">
+    <div id="Header" style='margin: 51px;'>
+        <a class="bt1" style="width:5em">BUCHAREST BIDING ONLINE</a>
+    </div>
+
+    <div id="NavBar">
+    </div>
+    <div id="Categorii">
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/arta.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/bijuteri.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/collectables.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/estate.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/fashion.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/Vehicule.png">
+        </div>
+
+    </div>
+
+    <div id="leftPageContainer">
+
+        <div class="titlu">
+            <p id="titluAnunt">Descriere anunt</p>
+        </div>
+
+        <div class="intro-anunt">
+            <div>Titlu anunt</div>
+            <p> $Title </p>
+        </div>
+        <div class="intro-anunt" id="ann">
+            <div>Descriere</div>
+            <p>$Description</p>
+        </div>
+
+        <div class="settings" data-announceId="$announceId" data-userName="$userName" data-founderUser="$founderUserName">
+            <div>Licitatie</div>
+            <p id="titlu-anunt">Introduceti suma de start pornind de la $startBidSum1<p>
+            <input type="text" id="suma-text"/>
+            <br><button type="button" id="bidButton">Bid</button>
+        </div>
+
+    </div>
+
+    <div id="rightPage">
+        <script id="contextData" type="text/javascript">
+            window.contextData.bidders = $Bidders || undefined;
+            window.contextData.startSum = $startBidSum2;
+            //window.contextData.founderUserName = ''+;
+        </script>
+
+        <div class="title-current-bidders">
+            <p>Bidders  </p>
+
+        </div>
+
+        <div class="intro-anunt">
+            <div id="explicit-bidders">
+
+            </div>
+        </div>
+
+    </div>
+    <div id="Footer"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+#leftPageContainer {
+    border: 3px solid rgba(0, 162, 232, 1);
+    width: 327px;
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 5px;
+    float:left;
+}
+
+.intro-anunt{
+    border-top: 1px solid rgba(0, 162, 232, 1);
+    border-bottom: 1px solid rgba(0, 162, 232, 1);
+    padding: 2px;
+    margin: 12px;
+}
+
+#ann {
+    border-top:0px;
+}
+
+.intro-anunt > div {
+    font-size: x-large
+}
+
+#titluAnunt {
+    font-size: xx-large;
+}
+
+#titlu-anunt {
+
+}
+
+.settings > div {
+    font-size: xx-large;
+}
+
+#bidButton {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 162, 232, 1);
+    padding: 0.2em 0.6em;
+    margin-top: 5px;
+    border-right: 1px solid white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#suma-text {
+    border-radius: 4px;
+    margin: 1px;
+}
+
+#rightPage {
+    border: 3px solid rgba(0, 162, 232, 1);
+    width:331px;
+    float: right;
+    padding: 14px;
+}
+
+.title-current-bidders > p {
+    font-size: xx-large;
+}

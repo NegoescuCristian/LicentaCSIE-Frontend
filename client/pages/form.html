@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bucharest Bidding Online </title>
+    <link rel="stylesheet" type="text/css" href="../css/Home.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <script src="../js/lib/jquery-1.11.1.js"></script>
+    <script src="../js/lib/require.js"></script>
+    <script src="../js/runner.js"></script>
+    <app name="announce"></app>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Runner.run();
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#Footer").load("/footer");
+            $("#NavBar").load("/searchBar");
+        });
+    </script>
+</head>
+
+<body>
+
+
+<div id="hole-page">
+    <div id="NavBar">
+
+    </div>
+
+    <div id="Categorii">
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/arta.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/bijuteri.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/collectables.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/estate.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/fashion.png">
+        </div>
+
+        <div class="icons">
+            <img class="bt1" style="width:9em" src="../resources/images/png/Vehicule.png">
+        </div>
+
+    </div>
+
+    <div id="pageContainer">
+        <div class="settings-announce-head">
+
+            <p> Adauga anunt </p>
+
+            <div class="settings-announce">
+                <span> Titlu anunt </span>
+                <input type="text" id="title">
+            </div>
+
+            <div class="settings-announce">
+                <span> Categorie </span>
+                <select id="selectCategory">
+                    <option value="Vehicles">Vehicles</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Collectables">Collectables</option>
+                    <option value="Art">Art</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Estate">Estate</option>
+                </select></td>
+            </div>
+
+            <div class="settings-announce">
+                <span> Descriere </span>
+                <input type="text" id="descriptionId">
+            </div>
+
+            <div class="settings-announce">
+                <span> Suma start </span>
+                <input type="text" id="startSumId">
+            </div>
+
+            <div class="settings-announce">
+                <span> Numar de telefon </span>
+                <input type="text" id="phone">
+            </div>
+
+            <div class="settings-announce">
+                <span> Email </span>
+                <input type="text" id="email">
+            </div>
+
+            <div class="settings-announce">
+                <button type="button" id="submitButton">Adauga anunt</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="Footer"></div>
+
+</body>
+</html>
