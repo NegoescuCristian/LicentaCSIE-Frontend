@@ -53,6 +53,7 @@
           "accountDetails":"/licenta-capi/user/details/%s",
           "addAnnounce":"/licenta-capi/announce/register/%s",
           "getAllAnnounce":"/licenta-capi/announce/getAll",
+          "getAnnounceByCategory":"/licenta-capi/announce/category/%s",
           "getAnnounceByAnnounceId":"/licenta-capi/announce/%s",
           "bid": "/licenta-capi/bid"
         }

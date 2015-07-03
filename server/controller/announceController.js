@@ -36,20 +36,35 @@ function doPost(request, response) {
         "Content-Type":"application/json"
     };
 
-    httpHelper.post(host,port,endpoint,headers, request.body).then(function(data) {
-        if(!response.finished) {
-            response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(JSON.stringify({'details':data}));
-        }
+    if(request.body.category != undefined) {
+        endpoint = configurationEndpoint[profile].uri.getAnnounceByCategory.replace('%s', request.body.category);
+        console.log(endpoint);
+        httpHelper.get(host,port,endpoint,{}).then(function(data) {
+            if(!response.finished) {
+                console.log(JSON.stringify(data));
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify(data.data));
+            }
 
-    }, function(err) {
-        if(!response.finished) {
-            console.log('Error response form capi AnnounceController',err);
-        }
-    });
+        }, function(err) {
+            console.log('Error on announce controller ',err);
+        });
+    } else {
+        httpHelper.post(host,port,endpoint,headers, request.body).then(function(data) {
+            if(!response.finished) {
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(JSON.stringify({'details':data}));
+            }
+
+        }, function(err) {
+            if(!response.finished) {
+                console.log('Error response form capi AnnounceController',err);
+            }
+        });
+    }
 }
 
 module.exports = {
     'get':doGet,
     'post':doPost
-}
+};

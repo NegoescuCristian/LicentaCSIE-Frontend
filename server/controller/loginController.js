@@ -9,7 +9,6 @@ var url = require('url'),
 
 function doGet(request, response) {
 
-    console.log("controller get");
     var body = request.body;
     var stringDataResponse = JSON.stringify(body);
     if (!response.finished) {
@@ -20,39 +19,54 @@ function doGet(request, response) {
 }
 
 function doPost(request, response) {
-    var fromPage = url.parse(request.headers.referer || request.url);
+    console.log('LOGOUT?',request.body.logout);
+    if(request.body.logout != undefined) {
+        //DO LOGOUT
+        request.session.authorization = undefined;
+        SessionStore.delete();
+        request.session = undefined;
+        response.writeHead(200,{"Content-Type":"application/json"});
+        response.end(JSON.stringify({
+            'redirect':true,
+            'toPage':'/login'
+        }));
+    }else {
+        //DO LOGIN
 
-    request.session.role = request.body.userRole;
-    request.session.user = request.body.userName;
-    request.session.password = request.body.password;
+        var fromPage = url.parse(request.headers.referer || request.url);
 
-    var headers = {
-        "Content-Type":"application/json"
-    };
+        request.session.role = request.body.userRole;
+        request.session.user = request.body.userName;
+        request.session.password = request.body.password;
 
-    var host = configuration[profile].host,
-        port = configuration[profile].port,
-        endpoint = configuration[profile].uri.login;
-    console.log(host,port,endpoint);
-    httpHelper.post(host, port, endpoint , headers,request.body). then(
-        function(data) {
-            if(!response.finished) {
-                request.session.authorization = request.body.userName;
-                request.session.userRole = request.body.userRole;
-                request.session.userId = data.data.id;
-                response.writeHead(200, {"Content-Type": "application/json"});
-                response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'okToLogin'}));
+        var headers = {
+            "Content-Type":"application/json"
+        };
+
+        var host = configuration[profile].host,
+            port = configuration[profile].port,
+            endpoint = configuration[profile].uri.login;
+        console.log('Making request to...for loging',host,port,endpoint);
+        httpHelper.post(host, port, endpoint , headers,request.body). then(
+            function(data) {
+                if(!response.finished) {
+                    request.session.authorization = request.body.userName;
+                    request.session.userRole = request.body.userRole;
+                    request.session.userId = data.data.id;
+                    response.writeHead(200, {"Content-Type": "application/json"});
+                    response.end(JSON.stringify({'redirect': true, 'toPage': '/home', 'details': 'okToLogin'}));
+                }
+            },
+            function(err) {
+                if(!response.finished) {
+                    console.log('Error response from licenta-capi, ',err);
+                    response.writeHead(500, {"Content-Type": "application/json"});
+                    response.end(JSON.stringify({'redirect': true, 'toPage': '/login', 'details': 'failedToLogin'}));
+                }
             }
-        },
-        function(err) {
-            if(!response.finished) {
-                console.log('Error response from licenta-capi, ',err);
-                response.writeHead(500, {"Content-Type": "application/json"});
-                response.end(JSON.stringify({'redirect': true, 'toPage': '/login', 'details': 'failedToLogin'}));
-            }
-        }
 
-    );
+        );
+    }
 }
 
 function doDelete() {

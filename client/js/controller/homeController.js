@@ -2,7 +2,7 @@
  * Created by root on 3/30/15.
  */
 
-define([], function () {
+define(['../lib/LogModule.js'], function (LogModule) {
 
     function HomeController() {
 
@@ -11,6 +11,8 @@ define([], function () {
     HomeController.prototype.start = function () {
 
         this._handleRefs();
+        this._handleIcons();
+        this._handleLogout();
 
         this._loading = $('<div class="loading"><div class="loader"></div></div>');
         $('#myGrid').append(this._loading);
@@ -40,7 +42,6 @@ define([], function () {
                         startSum: data[i].startSum,
                         announceId: data[i].announceId
                     };
-                    console.log(gridData);
                 }
                 self._loading.fadeOut();
                 self._createGrid(gridData);
@@ -116,7 +117,7 @@ define([], function () {
         });
     };
 
-    HomeController.prototype._handleRefs = function() {
+    HomeController.prototype._handleRefs = function () {
         $('#toForm').on('click', function () {
             window.location = '/form';
         });
@@ -125,8 +126,85 @@ define([], function () {
             window.location = "/account";
         });
 
-        $('#titlu').on('click', function() {
+        $('#titlu').on('click', function () {
             window.location = '/home';
+        });
+    };
+
+    HomeController.prototype._handleIcons = function () {
+        var self = this;
+        var icon = $('.icons');
+        icon.on('click', function () {
+            var attr = $(this).find('img').attr('src');
+            var category;
+            if (attr.indexOf('.png')) {
+                category = attr.substr(attr.lastIndexOf('/') + 1, attr.indexOf('.png') - attr.lastIndexOf('/') - 1);
+            } else if (attr.indexOf('.jpg')) {
+                category = attr.substr(attr.lastIndexOf('/') + 1, attr.indexOf('.jpg') - attr.lastIndexOf('/') - 1);
+            } else if (attr.indexOf('.jpeg')) {
+                category = attr.substr(attr.lastIndexOf('/') + 1, attr.indexOf('.jpeg') - attr.lastIndexOf('/') - 1);
+            } else if (attr.indexOf('.gif')) {
+                category = attr.substr(attr.lastIndexOf('/') + 1, attr.indexOf('.gif') - attr.lastIndexOf('/') - 1);
+            } else {
+                console.log('add another else if to check that particular image type');
+            }
+            var realCategory;
+            switch (category) {
+                case 'arta' :
+                    realCategory = 'ART';
+                    break;
+                case 'bijuteri':
+                    realCategory = 'JEWELRY';
+                    break;
+                case 'collectables':
+                    realCategory = 'COLLECTABLES';
+                    break;
+                case 'estate':
+                    realCategory = 'ESTATE';
+                    break;
+                case 'fashion':
+                    realCategory = 'FASHION';
+                    break;
+                case 'Vehicule':
+                    realCategory = 'VEHICLES';
+                    break;
+            }
+
+            $.ajax({
+                url: '/controller/announce',
+                type: 'POST',
+                data: JSON.stringify({
+                    category: realCategory
+                }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    var gridData = [];
+                    for (var i = 0; i < data.length; i++) {
+                        gridData[i] = {
+                            title: data[i].title,
+                            description: data[i].description,
+                            category: data[i].category,
+                            startDate: data[i].startDate,
+                            endDate: data[i].endDate,
+                            startSum: data[i].startSum,
+                            announceId: data[i].announceId
+                        };
+                    }
+                    self._loading.fadeOut();
+                    self._createGrid(gridData);
+                },
+                error: function (data) {
+                    self._loading.fadeOut();
+                }
+            });
+
+        });
+    };
+
+    HomeController.prototype._handleLogout = function() {
+        $('#logoutId').on('click', function() {
+            LogModule.logout();
         });
     };
 

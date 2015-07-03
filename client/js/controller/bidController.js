@@ -11,7 +11,7 @@ define([], function () {
         this._context = window.contextData;
         delete window.contextData;
         $('#contextData').remove();
-        $('#errorMessage').remove()
+        $('#errorMessage').remove();
 
         this._handleRefs();
         var self = this;
@@ -34,19 +34,26 @@ define([], function () {
                 list += '</ul>';
                 bidDiv.append(list);
             } else {
-                console.log('BIDDERS');
                 $('#explicit-bidders').append('<p id = "errorMessage" style="border: 2px solid red">Nu exista niciun bidder</p>');
             }
         } else {
+            var alreadyBidded = false;
             var bidDiv = $('#explicit-bidders');
             var list = '<ul style="list-style-type:none">';
             if (bidders != undefined) {
                 for (var i = 0; i < bidders.length; i++) {
                     var currentBidder = bidders[i];
                     list += '<li>' + currentBidder.userName + ' a biduit ' + currentBidder.biddedSum + ' RON</li>';
+                    if(currentBidder.userName == userName) {
+                        alreadyBidded = true;
+                    }
                 }
                 list += '</ul>';
                 bidDiv.append(list);
+                if(alreadyBidded == true) {
+                    $('.settings').append('<p id = "errorMessageBid" style="border: 2px solid red">Deja ati biduit!</p>');
+                    $('#bidButton').remove();
+                }
             } else {
                 console.log('BIDDERS');
                 $('#explicit-bidders').append('<p id = "errorMessage" style="border: 2px solid red">Nu exista niciun bidder</p>');

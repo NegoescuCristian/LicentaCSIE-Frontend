@@ -49,6 +49,6 @@ define([], function() {
             return true;
         }
         return false;
-    }
+    };
     return ValidationModule;
 });

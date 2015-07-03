@@ -58,7 +58,7 @@ function handle(request, pathOfPage, response) {
         var authorization = configuration.views.authorization ? configuration.views.authorization : null;
 
         if (authorization.indexOf(page) != -1) {
-            if (request.session.authorization !== undefined && request.session.authorization !== null) {
+            if (request.session.authorization != undefined && request.session.authorization != null) {
                 console.log('Authorization granted');
                 //if(configuration[pathOfPage]['customFields']) {
                 //    var customFields = configuration[pathOfPage]['customFields'];

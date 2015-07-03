@@ -17,7 +17,6 @@ function start() {
         //router.route(request,response);
     }).listen(port, ipaddress);
     console.log('Server has started');
-
 }
 
 function handleRequest(request, response) {

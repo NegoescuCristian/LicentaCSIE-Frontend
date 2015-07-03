@@ -13,7 +13,6 @@ function doGet(request, response) {
     var hostName = requestEndpoints[profile].host,
         port = requestEndpoints[profile].port,
         path = requestEndpoints[profile].uri.accountDetails.replace("%s",request.session.authorization);
-    console.log(hostName,port,path);
     httpHelper.get(hostName,port,path,{}).then(
         function (data) {
             if(!response.finished) {
@@ -35,4 +34,4 @@ function doGet(request, response) {
 
 module.exports = {
     get: doGet
-}
+};
